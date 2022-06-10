@@ -1,0 +1,134 @@
+<resources>
+    <string name="appName">My Todos</string>
+    <string name="_for">For</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="due_date">Due Date</string>
+    <string name="anytime">Anytime</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="task">Nhiệm vụ</string>
+    <string name="calendar">Lịch</string>
+    <string name="profile">Của tôi</string>
+
+
+    <!--    On boarding -->
+    <string name="welcome_to_app">Welcome to My Todos</string>
+    <string name="next">Tiếp tục</string>
+    <string name="log_in">Đăng nhập</string>
+    <string name="start">Bắt đầu</string>
+    <string name="on_boarding_1_message">Whats going to happen tomorrow?</string>
+    <string name="on_boarding_2_message">Get notified when work happens.</string>
+    <string name="on_boarding_3_message">Task and assign them to colleagues.</string>
+
+    <!--    Auth Screens-->
+    <string name="login_to_your_account">Đăng nhập vào tài khoản của bạn</string>
+    <string name="Email">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="forgot_password">Quên mật khẩu</string>
+    <string name="or_sign_in_with">Hoặc đăng nhập với</string>
+    <string name="do_not_have_account">Chưa có tài khoản?</string>
+    <string name="Register">Đăng ký</string>
+    <string name="create_your_account">Tạo tài khoản của riêng bạn</string>
+    <string name="username">Tên người dùng</string>
+    <string name="agree_with_conditions">Bằng cách đăng ký, bạn đồng ý với <font color="#FF0707">Điều khoản &amp; Điều kiện</font> và  <font color="#FF0707">Chính sách Quyền riêng tư</font> của chúng tôi.</string>
+    <string name="ConfirmPassword">Xác nhận mật khẩu</string>
+    <string name="find_your_account">Tìm tài khoản của bạn</string>
+    <string name="enter_your_email">Nhập email của bạn</string>
+    <string name="SignUpSuccessfully">Đăng Ký Thành Công</string>
+    <string name="check_your_email_to_active_account">Vui lòng kiểm tra email để kích hoạt tài khoản</string>
+    <string name="ForgotPassword">Quên Mật Khẩu</string>
+    <string name="check_your_email_to_reset_password">Vui lòng kiểm tra email để đặt lại mật khẩu</string>
+    <string name="email_not_valid">Email không hợp lệ</string>
+    <string name="please_enter_username">Vui lòng nhập tên</string>
+    <string name="please_enter_email">Vui lòng nhập email</string>
+    <string name="please_enter_password">Vui lòng nhập mật khẩu</string>
+    <string name="password_must_be_more_than_6">Mật khẩu có tối thiếu 6 kí tự</string>
+    <string name="password_not_matching">Mật khẩu không trùng khớp</string>
+    <string name="please_wait">Vui lòng chờ…!!!</string>
+    <string name="email_already_used">Email đã được sử dụng</string>
+    <string name="unknown_error">Lỗi không xác định</string>
+    <string name="sign_up_successfully">Đăng ký thàng công</string>
+    <string name="no_internet_connection">Không có kết nối internet</string>
+    <string name="update_profile_failed">Cập nhật thông tin người dùng lỗi</string>
+    <string name="email_or_password_not_valid">Tài khoản hoặc mật khẩu không chính xác</string>
+    <string name="login_successfully">Đăng nhập thành công</string>
+    <string name="login_failed">Đăng nhập thất bại</string>
+    <string name="account_not_exist">Tài khoản không tồn tại</string>
+    <string name="sended_verify_mail">Đã gửi thư xác nhận</string>
+    <string name="send_verify_mail_failed">Gửi thư tất bại</string>
+    <string name="work">Công việc</string>
+    <string name="personal">Cá nhân</string>
+    <string name="favorite">Yêu thích</string>
+    <string name="birthday">Sinh nhật</string>
+    <string name="loading_data">Đang tải dữ liệu...!</string>
+    <string name="unclassified">Chưa phân loại</string>
+    <string name="All">Tất cả</string>
+    <string name="add_subtask">Thêm nhiệm vụ phụ</string>
+    <string name="Deadline">Ngày tới hạn</string>
+    <string name="Time">Thời gian</string>
+    <string name="Note">Ghi chú</string>
+    <string name="Add">Thêm</string>
+    <string name="Done">Xong</string>
+    <string name="AddTask">Thêm nhiệm vụ</string>
+    <string name="Cancel">Hủy</string>
+    <string name="enter_todo">Nhập nhiệm vụ con</string>
+    <string name="delete">Xóa</string>
+    <string name="enter_task">Nhập nhiệm vụ</string>
+    <string name="you_just_deleted_a_todo">Bạn vừa xóa một nhiệm vụ</string>
+    <string name="undo">Hoàn tác</string>
+    <string name="enter_note">Nhập ghi chú</string>
+    <string name="Edit">Sửa</string>
+    <string name="setTimeDeadline">Đặt giờ hết hạn</string>
+    <string name="add_successfully">Thêm thành công</string>
+    <string name="add_failure">Thêm thất bại</string>
+    <string name="UdapteTask">Cập nhật nhiệm vụ</string>
+    <string name="update_successfully">Cập nhật thành công</string>
+    <string name="update_failure">Cập nhật thất bại</string>
+    <string name="title_empty">Tiêu đề không được bỏ trống</string>
+    <string name="loading_data_failure">Tải dữ liệu thất bại!</string>
+    <string name="show_all_task_completed">Xem tất cả nhiệm vụ đã hoàn thành</string>
+    <string name="before">Trước</string>
+    <string name="today">Hôm nay</string>
+    <string name="future">Tương lai</string>
+    <string name="finish_today">Hoàn thành hôm nay</string>
+    <string name="no_task_in_this_group">Không có nhiệm vụ nào trong mục này.</string>
+    <string name="press_plus_to_add_task">Nhấp vào + để tạo nhiệm vụ của bạn</string>
+    <string name="completed">Đã hoàn thàn</string>
+    <string name="manage_tag">Quản lý danh mục</string>
+    <string name="tag_in_home">Các danh mục được hiển thị trên trang chủ.</string>
+    <string name="Enter_tag_title">Nhập tiêu đề danh mục</string>
+    <string name="ok">Ok</string>
+    <string name="tag_title_not_empty">Tên danh mục không được trống</string>
+    <string name="tag_title_already_exist">Danh mục đã tồn tại.</string>
+    <string name="Are_you_sure_you_want_to_delete_this_entry">Bạn có chắc muốn xóa mục này?</string>
+    <string name="no_tasks_completed">Không có nhiệm vụ nào đã hoàn thành</string>
+    <string name="completed_task">Nhiệm vụ đã hoàn thành</string>
+    <string name="time_finish">Thời gian hoàn thành</string>
+    <string name="no_task_in_the_date">Không có nhiệm vụ trong ngày này</string>
+    <string name="the_maximum_number_of_categories_is_">Số lượng danh mục tối đa là 8</string>
+    <string name="the_minimum_number_of_categories_is_">Số lượng danh mục tối thiểu là 3</string>
+    <string name="change_password">Đổi mật khẩu</string>
+    <string name="Logout">Đăng xuất</string>
+    <string name="keep_the_plan_for_30_days">Giữ kết hoạch trong 30 ngày</string>
+    <string name="mission_overview">Tổng quan về nhiệm vụ</string>
+    <string name="mission_completed">Các nhiệm vụ đã hoàn thành</string>
+    <string name="mission_pending">Các nhiệm vụ đang chờ giải quyết</string>
+    <string name="task_classification">Phân loại nhiệm vụ</string>
+    <string name="hi">Chào&#032;</string>
+    <string name="unit_percent">Đơn vị: %</string>
+    <string name="data_not_available">Không có dữ liệu</string>
+    <string name="change_password_message">Chúng tôi đã gửi một mail đến địa chỉ email của bạn. Vui lòng kiểm tra hộp thư để đổi mật khẩu.</string>
+    <string name="change_password_failed">Hệ thống lỗi, vui lòng thử lại sau.</string>
+    <string name="Are_you_sure_you_want_to_logout">Bạn có chắc muốn đăng xuất?</string>
+    <string name="press_again_to_exit">Nhấn lần nữa để thoát</string>
+    <string name="verify_email">Xác nhận email</string>
+    <string name="verify_email_to_login">Vui lòng kiểm tra email và xác nhận tài khoản để đăng nhập.</string>
+    <string name="send_email">Gửi mail</string>
+    <string name="cant_send_verify_email">Không thể gửi mail xác nhận. Vui lòng thử lại sau.</string>
+    <string name="add_tag">Thêm danh mục</string>
+
+
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tagContainer"
+    style="@style/ItemTagLayout"
+    tools:viewBindingIgnore="true">
+
+    <TextView
+        android:id="@+id/tvTagName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:lineHeight="22dp"
+        android:maxLines="1"
+        android:text="@string/hello_blank_fragment"
+        android:textColor="#8F8C8C8C"
+        android:textSize="16sp"
+        android:textFontWeight="500"
+        tools:ignore="UnusedAttribute" />
+</androidx.cardview.widget.CardView>

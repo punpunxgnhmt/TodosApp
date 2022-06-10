@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primaryColor"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/todoPadding"
+        android:paddingEnd="@dimen/todoPadding">
+
+        <ImageButton
+            style="@style/IconButton"
+            android:background="@null"
+            android:src="@drawable/ic_delete"
+            android:tint="@color/white"
+            tools:ignore="ContentDescription,UseAppTint,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/delete"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/delete"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <ImageButton
+            style="@style/IconButton"
+            android:background="@null"
+            android:src="@drawable/ic_delete"
+            android:tint="@color/white"
+            tools:ignore="ContentDescription,UseAppTint,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/todoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/todoBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="4dp"
+        android:paddingStart="@dimen/todoPadding"
+        android:paddingEnd="@dimen/todoPadding">
+
+
+        <CheckBox
+            android:id="@+id/cbComplete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/selector_checkbox_complete_state"
+            android:buttonTint="@color/itemTodoChecked"
+            android:checked="true" />
+
+        <EditText
+            android:id="@+id/edtTodo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="@string/enter_todo"
+            android:textColor="@color/textColor"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLength="100"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:text="@string/hello_blank_fragment"
+            tools:ignore="LabelFor" />
+
+        <ImageButton
+            android:id="@+id/btnCloseFocus"
+            style="@style/IconButton"
+            android:background="@null"
+            android:src="@drawable/ic_done"
+            android:tint="#4BE61F"
+            android:visibility="gone"
+            tools:ignore="ContentDescription,UseAppTint,SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/btnDrag"
+            style="@style/IconButton"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_drawer"
+            tools:ignore="ContentDescription,UseAppTint,SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+</FrameLayout>

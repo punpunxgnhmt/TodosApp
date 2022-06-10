@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#DE4949</color>
+    <color name="primaryColorDisabled">#D0E3F9</color>
+    <color name="primaryColorLight">#F18080</color>
+    <color name="primaryColorLightTrans">#80F18080</color>
+    <color name="secondaryColor">#488BF8</color>
+
+    <color name="black">#000</color>
+    <color name="white">#FFF</color>
+    <color name="gray">#808080</color>
+
+    <color name="textColor">#333</color>
+    <color name="textColorLight">#E6755F5F</color>
+    <color name="lineColor">#555</color>
+    <color name="itemTodoChecked">#707070</color>
+    <color name="todoBackground">#f1f1f1</color>
+    <color name="todoBackgroundChecked">#E3E3E3</color>
+</resources>

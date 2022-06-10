@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".Activities.Task.TaskActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <Spinner
+                android:id="@+id/spnTag"
+                style="@style/ViewMarginInTaskLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@null"
+                android:overlapAnchor="false" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTask"
+                style="@style/ViewMarginInTaskLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:hint="@string/enter_task"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:padding="4dp"
+                tools:ignore="LabelFor" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTodo"
+                style="@style/ViewMarginInTaskLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:minHeight="100dp" />
+
+            <LinearLayout
+                android:id="@+id/btnAddTodo"
+                style="@style/TaskGroupLayout"
+                android:layout_marginTop="12dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    style="@style/IconTaskGroup"
+                    android:src="@drawable/ic_add"
+                    tools:ignore="ContentDescription,UseAppTint" />
+
+                <TextView
+                    style="@style/TitleTaskGroup"
+                    android:text="@string/add_subtask"
+                    android:textColor="@color/primaryColor" />
+            </LinearLayout>
+
+            <View style="@style/HorizontalLineDeviceTaskGroup" />
+
+            <LinearLayout
+                android:id="@+id/btnDate"
+                style="@style/TaskGroupLayout">
+
+                <ImageView
+                    style="@style/IconTaskGroup"
+                    android:src="@drawable/ic_calendar"
+                    tools:ignore="ContentDescription,UseAppTint" />
+
+                <TextView
+                    style="@style/TitleTaskGroup"
+                    android:text="@string/Deadline" />
+
+                <TextView
+                    android:id="@+id/tvDeadlineDate"
+                    style="@style/DetailTaskGroup" />
+            </LinearLayout>
+
+            <View style="@style/HorizontalLineDeviceTaskGroup" />
+
+            <LinearLayout
+                android:id="@+id/btnTime"
+                style="@style/TaskGroupLayout">
+
+                <ImageView
+                    style="@style/IconTaskGroup"
+                    android:src="@drawable/ic_clock"
+                    tools:ignore="ContentDescription,UseAppTint" />
+
+                <TextView
+                    style="@style/TitleTaskGroup"
+                    android:text="@string/Time" />
+
+                <TextView
+                    android:id="@+id/tvDeadlineTime"
+                    style="@style/DetailTaskGroup" />
+            </LinearLayout>
+
+            <View style="@style/HorizontalLineDeviceTaskGroup" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btnNote"
+                    style="@style/TaskGroupLayout">
+
+                    <ImageView
+                        style="@style/IconTaskGroup"
+                        android:src="@drawable/ic_note"
+                        tools:ignore="ContentDescription,UseAppTint" />
+
+                    <TextView
+                        style="@style/TitleTaskGroup"
+                        android:text="@string/Note" />
+
+                    <TextView
+                        style="@style/DetailTaskGroup"
+                        android:background="@null"
+                        android:text="@string/Edit" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNote"
+                    style="@style/ViewMarginInTaskLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="top"
+                    android:hint="@string/enter_note"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:padding="4dp"
+                    tools:ignore="LabelFor" />
+
+            </LinearLayout>
+
+            <View style="@style/HorizontalLineDeviceTaskGroup" />
+        </LinearLayout>
+
+        <com.example.todosapp.Views.MessageLayout
+            android:id="@+id/messageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+
+</ScrollView>

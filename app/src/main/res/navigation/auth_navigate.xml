@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_navigate"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.todosapp.Fragments.Auth.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment"
+
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_loginFragment_to_findAccountFragment"
+            app:destination="@id/findAccountFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/findAccountFragment"
+        android:name="com.example.todosapp.Fragments.Auth.FindAccountFragment"
+        android:label="fragment_find_account"
+        tools:layout="@layout/fragment_find_account">
+        <action
+            android:id="@+id/action_findAccountFragment_to_findAccountSuccessfullyFragment"
+            app:destination="@id/findAccountSuccessfullyFragment"
+            app:popUpTo="@id/loginFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/findAccountSuccessfullyFragment"
+        android:name="com.example.todosapp.Fragments.Auth.FindAccountSuccessfullyFragment"
+        android:label="FindAccountSuccessfullyFragment"/>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.todosapp.Fragments.Auth.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_registerSuccessfullyFragment"
+            app:destination="@id/registerSuccessfullyFragment"
+            app:popUpTo="@id/loginFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerSuccessfullyFragment"
+        android:name="com.example.todosapp.Fragments.Auth.RegisterSuccessfullyFragment"
+        android:label="RegisterSuccessfullyFragment"/>
+</navigation>
