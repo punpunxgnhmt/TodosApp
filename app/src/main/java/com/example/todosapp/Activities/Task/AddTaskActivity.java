@@ -1,10 +1,10 @@
 package com.example.todosapp.Activities.Task;
 
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.todosapp.Dialogs.ProgressDialog;
+import com.example.todosapp.Interfaces.Callback;
 import com.example.todosapp.Models.Tag;
 import com.example.todosapp.Models.Task;
 import com.example.todosapp.Models.Todo;
@@ -16,9 +16,7 @@ import java.util.Date;
 /**
  * This activity extends from Task activity
  * and is used for add a task.
- *
- *
- * */
+ */
 public class AddTaskActivity extends TaskActivity {
 
     @Override
@@ -56,7 +54,7 @@ public class AddTaskActivity extends TaskActivity {
             if (date != null) {
                 task.setDeadline(date);
             }
-        }else{
+        } else {
             //if not, choose today.
             task.setDeadline(new Date());
         }
@@ -88,13 +86,16 @@ public class AddTaskActivity extends TaskActivity {
             if (task.isSuccessful()) {
                 Toast.makeText(this, R.string.add_successfully, Toast.LENGTH_SHORT).show();
             } else {
-            // if not, notify error
+                // if not, notify error
                 Toast.makeText(this, R.string.add_failure, Toast.LENGTH_SHORT).show();
                 HandleError.checkNetWorkError(AddTaskActivity.this, task.getException());
             }
             // close activity and progress dialog
             AddTaskActivity.this.finish();
             ProgressDialog.hideDialog();
+        }, () -> {
+            HandleError.checkNetWorkError(AddTaskActivity.this, null);
+            AddTaskActivity.this.finish();
         });
     }
 }

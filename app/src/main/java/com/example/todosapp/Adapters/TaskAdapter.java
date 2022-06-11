@@ -28,6 +28,8 @@ import com.example.todosapp.Interfaces.ItemTaskCheckedChange;
 import com.example.todosapp.Interfaces.ItemTaskClick;
 import com.example.todosapp.Models.Task;
 import com.example.todosapp.R;
+import com.example.todosapp.Utils.HandleError;
+import com.google.android.gms.tasks.OnCompleteListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -78,7 +80,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> im
             TodoApplication application = (TodoApplication) context.getApplicationContext();
             Database database = application.getDatabase();
             Log.e("EEE", "CHECKED CHANGE: " + task.getTitle());
-            database.TASKS.updateTaskCompleteState(task, checked, null);
+            database.TASKS.updateTaskCompleteState(task, checked, result -> {
+                if (!result.isSuccessful()) {
+                    HandleError.checkNetWorkError(context, null);
+                }
+            }, null);
         };
     }
 

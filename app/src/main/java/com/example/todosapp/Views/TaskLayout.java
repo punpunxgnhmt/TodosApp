@@ -20,6 +20,8 @@ import com.example.todosapp.Interfaces.ChildRefEventListener;
 import com.example.todosapp.Interfaces.Callback;
 import com.example.todosapp.Models.Task;
 import com.example.todosapp.R;
+import com.example.todosapp.Utils.HandleError;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 
@@ -185,7 +187,11 @@ public class TaskLayout extends FrameLayout {
                 super.onDismissed(transientBottomBar, event);
                 if (dismissItSelf.get()) {
                     adapter.clearUndoTask();
-                    database.TASKS.delete(task, null);
+                    database.TASKS.delete(task, res -> {
+                        if(!res.isSuccessful()){
+                            HandleError.checkNetWorkError(getContext(), res.getException());
+                        }
+                    }, null);
                 }
             }
         });

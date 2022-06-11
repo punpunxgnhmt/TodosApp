@@ -3,29 +3,22 @@ package com.example.todosapp.Activities.Task;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.SubMenu;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
 import com.example.todosapp.Dialogs.ProgressDialog;
-import com.example.todosapp.Models.Tag;
+import com.example.todosapp.Interfaces.Callback;
 import com.example.todosapp.Models.Task;
 import com.example.todosapp.Models.Todo;
 import com.example.todosapp.R;
 import com.example.todosapp.Utils.HandleError;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 /**
  * This activity extends from Task activity
  * and is used for update a task.
- *
- *
- * */
+ */
 public class UpdateTaskActivity extends TaskActivity {
 
     @Override
@@ -66,7 +59,6 @@ public class UpdateTaskActivity extends TaskActivity {
     }
 
 
-
     // this method will be called when user choose update in toolbar
     @Override
     protected void finishTask() {
@@ -101,6 +93,9 @@ public class UpdateTaskActivity extends TaskActivity {
             }
             UpdateTaskActivity.this.finish();
             ProgressDialog.hideDialog();
+        }, () -> {
+            HandleError.checkNetWorkError(UpdateTaskActivity.this, null);
+            UpdateTaskActivity.this.finish();
         });
     }
 
@@ -122,16 +117,20 @@ public class UpdateTaskActivity extends TaskActivity {
                 }
                 setResult(RESULT_CANCELED);
                 Toast.makeText(this, R.string.update_failure, Toast.LENGTH_SHORT).show();
+                HandleError.checkNetWorkError(UpdateTaskActivity.this, res.getException());
+            }, () -> {
+                HandleError.checkNetWorkError(UpdateTaskActivity.this, null);
+                finish();
             });
-        }) ;
+        });
     }
 
-    private void confirmDeleteTask(DialogInterface.OnClickListener confirmDelete){
+    private void confirmDeleteTask(DialogInterface.OnClickListener confirmDelete) {
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
         builder.setTitle(R.string.delete);
         builder.setMessage(R.string.Are_you_sure_you_want_to_delete_this_entry);
         builder.setNegativeButton(R.string.Cancel, (dialog, which) -> dialog.dismiss());
-        builder.setPositiveButton(R.string.Done,confirmDelete);
+        builder.setPositiveButton(R.string.Done, confirmDelete);
         builder.show();
     }
 

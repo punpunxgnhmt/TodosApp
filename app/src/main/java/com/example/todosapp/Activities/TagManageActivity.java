@@ -1,17 +1,13 @@
 package com.example.todosapp.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import android.os.Bundle;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.todosapp.Adapters.TagManageAdapter;
 import com.example.todosapp.Application.TodoApplication;
@@ -22,8 +18,7 @@ import com.example.todosapp.Interfaces.ChildRefEventListener;
 import com.example.todosapp.Interfaces.OptionsTag;
 import com.example.todosapp.Models.Tag;
 import com.example.todosapp.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.todosapp.Utils.HandleError;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.database.DataSnapshot;
 
@@ -32,7 +27,7 @@ import java.util.ArrayList;
 
 /**
  * This activity is used for manage tags of user.
- * */
+ */
 public class TagManageActivity extends AppCompatActivity {
 
     Toolbar toolbar;
@@ -140,14 +135,14 @@ public class TagManageActivity extends AppCompatActivity {
             }
 
             // check change
-            if(title.equals(tag.getTitle())){
+            if (title.equals(tag.getTitle())) {
                 dialog.dismiss();
                 return;
             }
 
             // check title duplicate
-            for(Tag mTag : tags){
-                if(!mTag.getId().equals(tag.getId()) && mTag.getTitle().equals(title)){
+            for (Tag mTag : tags) {
+                if (!mTag.getId().equals(tag.getId()) && mTag.getTitle().equals(title)) {
                     dialog.showErrorText(getString(R.string.tag_title_already_exist));
                     return;
                 }
@@ -185,8 +180,8 @@ public class TagManageActivity extends AppCompatActivity {
                 dialog.showErrorText(getString(R.string.tag_title_not_empty));
                 return;
             }
-            for(Tag mTag : tags){
-                if(mTag.getTitle().equals(title)){
+            for (Tag mTag : tags) {
+                if (mTag.getTitle().equals(title)) {
                     dialog.showErrorText(getString(R.string.tag_title_already_exist));
                     return;
                 }
@@ -200,21 +195,28 @@ public class TagManageActivity extends AppCompatActivity {
     }
 
 
-
     private void addNewTag(Tag tag) {
         int maxTags = 8;
-        if(tags.size() >= maxTags){
+        if (tags.size() >= maxTags) {
             Toast.makeText(this, R.string.the_maximum_number_of_categories_is_, Toast.LENGTH_SHORT).show();
             return;
         }
         ProgressDialog.showDialog(this);
-        database.TAGS.add(tag, task -> ProgressDialog.hideDialog());
+        database.TAGS.add(tag, task -> {
+            ProgressDialog.hideDialog();
+            if (!task.isSuccessful())
+                checkError(task.getException());
+        }, () -> checkError(null));
     }
 
     private void updateTag(Tag tag) {
         // call update tag from database
         ProgressDialog.showDialog(this);
-        database.TAGS.update(tag, task -> ProgressDialog.hideDialog());
+        database.TAGS.update(tag, task -> {
+            ProgressDialog.hideDialog();
+            if (!task.isSuccessful())
+                checkError(task.getException());
+        }, () -> checkError(null));
     }
 
     private void deleteTag(Tag tag) {
@@ -222,14 +224,22 @@ public class TagManageActivity extends AppCompatActivity {
 
         // if current total tag is less or equals to 3 -> can't delete tag
         int minTags = 3;
-        if(tags.size() -1 <= minTags){
+        if (tags.size() - 1 <= minTags) {
             Toast.makeText(this, R.string.the_minimum_number_of_categories_is_, Toast.LENGTH_SHORT).show();
             return;
         }
 
         // call delete tag from database
         ProgressDialog.showDialog(this);
-        database.TAGS.delete(tag, task -> ProgressDialog.hideDialog());
+        database.TAGS.delete(tag, task -> {
+            ProgressDialog.hideDialog();
+            if (!task.isSuccessful())
+                checkError(task.getException());
+        }, () -> checkError(null));
+    }
+
+    private void checkError(Exception e){
+        HandleError.checkNetWorkError(TagManageActivity.this, e);
     }
 
     @Override

@@ -5,7 +5,9 @@ import android.util.Log;
 
 import com.example.todosapp.Database.Database;
 import com.example.todosapp.Models.User;
+import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -16,6 +18,12 @@ import java.util.ArrayList;
 public class TodoApplication extends Application {
     User user;
     Database database;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+    }
 
     public void login(User user) {
         this.user = user;

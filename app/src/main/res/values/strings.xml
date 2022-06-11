@@ -19,9 +19,9 @@
     <string name="next">Tiếp tục</string>
     <string name="log_in">Đăng nhập</string>
     <string name="start">Bắt đầu</string>
-    <string name="on_boarding_1_message">Whats going to happen tomorrow?</string>
-    <string name="on_boarding_2_message">Get notified when work happens.</string>
-    <string name="on_boarding_3_message">Task and assign them to colleagues.</string>
+    <string name="on_boarding_1_message">Quản lý công việc dễ dàng hơn</string>
+    <string name="on_boarding_2_message">Đem đến trải nghiệm tuyệt vời</string>
+    <string name="on_boarding_3_message">Trải nghiệm ngày của bạn!</string>
 
     <!--    Auth Screens-->
     <string name="login_to_your_account">Đăng nhập vào tài khoản của bạn</string>
@@ -63,7 +63,7 @@
     <string name="personal">Cá nhân</string>
     <string name="favorite">Yêu thích</string>
     <string name="birthday">Sinh nhật</string>
-    <string name="loading_data">Đang tải dữ liệu...!</string>
+    <string name="loading_data">Đang tải dữ liệu…!</string>
     <string name="unclassified">Chưa phân loại</string>
     <string name="All">Tất cả</string>
     <string name="add_subtask">Thêm nhiệm vụ phụ</string>
@@ -100,7 +100,7 @@
     <string name="manage_tag">Quản lý danh mục</string>
     <string name="tag_in_home">Các danh mục được hiển thị trên trang chủ.</string>
     <string name="Enter_tag_title">Nhập tiêu đề danh mục</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="tag_title_not_empty">Tên danh mục không được trống</string>
     <string name="tag_title_already_exist">Danh mục đã tồn tại.</string>
     <string name="Are_you_sure_you_want_to_delete_this_entry">Bạn có chắc muốn xóa mục này?</string>
@@ -129,6 +129,7 @@
     <string name="send_email">Gửi mail</string>
     <string name="cant_send_verify_email">Không thể gửi mail xác nhận. Vui lòng thử lại sau.</string>
     <string name="add_tag">Thêm danh mục</string>
-
-
+    <string name="error">Lỗi</string>
+    <string name="finish">Kết thúc</string>
+    <string name="try_again">Thử lại</string>
 </resources>

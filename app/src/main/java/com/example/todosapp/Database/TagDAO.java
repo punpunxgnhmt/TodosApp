@@ -1,19 +1,25 @@
 package com.example.todosapp.Database;
 
+import static com.example.todosapp.Utils.FirebaseConstants.timeOut;
+
+import android.os.Handler;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.todosapp.Interfaces.Callback;
 import com.example.todosapp.Interfaces.ChildRefEventListener;
-import com.example.todosapp.Interfaces.FindTag;
 import com.example.todosapp.Models.Tag;
 import com.example.todosapp.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * this class is used for interaction with database about tags.
@@ -127,21 +133,56 @@ public class TagDAO {
         return tags;
     }
 
-    public void add(Tag tag, OnCompleteListener<Void> callback) {
+    public void add(Tag tag, OnCompleteListener<Void> callback,  Callback timeoutCallback) {
+        AtomicBoolean returnedResult = new AtomicBoolean(false);
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            if(!returnedResult.get()){
+                if(timeoutCallback != null){
+                    timeoutCallback.callback();
+                }
+            }
+        }, timeOut);
+
         //create a new tag in database
         String id = reference.push().getKey();
         tag.setId(id);
-        reference.child(id).setValue(tag).addOnCompleteListener(callback);
+        reference.child(id).setValue(tag)
+            .addOnCompleteListener(callback)
+            .addOnCompleteListener(task -> returnedResult.set(true));
     }
 
-    public void update(Tag tag, OnCompleteListener<Void> callback) {
+    public void update(Tag tag, OnCompleteListener<Void> callback, Callback timeoutCallback) {
+        AtomicBoolean returnedResult = new AtomicBoolean(false);
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            if(!returnedResult.get()){
+                if(timeoutCallback != null){
+                    timeoutCallback.callback();
+                }
+            }
+        }, timeOut);
+
         // update the exist tag in database.
-        reference.child(tag.getId()).setValue(tag).addOnCompleteListener(callback);
+        reference.child(tag.getId()).setValue(tag)
+            .addOnCompleteListener(callback)
+            .addOnCompleteListener(task -> returnedResult.set(true));
     }
 
-    public void delete(Tag tag, OnCompleteListener<Void> callback) {
+    public void delete(Tag tag, OnCompleteListener<Void> callback, Callback timeoutCallback) {
+        AtomicBoolean returnedResult = new AtomicBoolean(false);
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            if(!returnedResult.get()){
+                if(timeoutCallback != null){
+                    timeoutCallback.callback();
+                }
+            }
+        }, timeOut);
         //remove the tag exist in database.
-        reference.child(tag.getId()).removeValue().addOnCompleteListener(callback);
+        reference.child(tag.getId()).removeValue()
+            .addOnCompleteListener(callback)
+            .addOnCompleteListener(task -> returnedResult.set(true));
     }
 
 

@@ -1,11 +1,9 @@
 package com.example.todosapp.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.todosapp.R;
 import com.google.firebase.auth.FirebaseAuth;

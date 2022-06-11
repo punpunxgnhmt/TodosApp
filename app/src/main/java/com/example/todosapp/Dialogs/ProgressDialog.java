@@ -32,4 +32,11 @@ public class ProgressDialog {
         }
     }
 
+    public static boolean isShowing(){
+        if (progressDialog == null)
+            return  false;
+
+        return  progressDialog.isShowing();
+    }
+
 }

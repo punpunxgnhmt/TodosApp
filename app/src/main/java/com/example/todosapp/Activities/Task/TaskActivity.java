@@ -20,9 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todosapp.Adapters.TagArrayAdapter;
 import com.example.todosapp.Adapters.TodoAdapter;
-import com.example.todosapp.Database.Database;
 import com.example.todosapp.Application.TodoApplication;
-import com.example.todosapp.Dialogs.ProgressDialog;
+import com.example.todosapp.Database.Database;
 import com.example.todosapp.Helper.TodoAdapterItemTouchHelper;
 import com.example.todosapp.Models.Tag;
 import com.example.todosapp.Models.Task;

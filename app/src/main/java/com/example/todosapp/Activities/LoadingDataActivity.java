@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.todosapp.Application.TodoApplication;
-import com.example.todosapp.Database.Database;
 import com.example.todosapp.Database.TaskDAO;
 import com.example.todosapp.Models.Tag;
 import com.example.todosapp.Models.Task;
@@ -17,6 +16,7 @@ import com.example.todosapp.Models.User;
 import com.example.todosapp.R;
 import com.example.todosapp.Utils.FirebaseConstants;
 import com.example.todosapp.Utils.HandleError;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -42,7 +42,7 @@ public class LoadingDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading_data);
         instanceData();
-        eventListener();
+        getUserData();
     }
 
     private void instanceData() {
@@ -52,7 +52,7 @@ public class LoadingDataActivity extends AppCompatActivity {
         userRef = database.getReference(FirebaseConstants.REFERENCES.USERS).child(firebaseUser.getUid());
     }
 
-    private void eventListener() {
+    private void getUserData() {
         // get data of user only one time from fire base.
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -93,6 +93,7 @@ public class LoadingDataActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e(HandleError.tag, "GET DATA ERROR: " + error.getMessage());
                 Toast.makeText(LoadingDataActivity.this, R.string.loading_data_failure, Toast.LENGTH_SHORT).show();
+                HandleError.checkNetWorkError(LoadingDataActivity.this, null);
             }
         });
     }
@@ -106,6 +107,8 @@ public class LoadingDataActivity extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> {
                     Log.e(HandleError.tag, "checkNewUser: " + e.getMessage());
+                    Toast.makeText(LoadingDataActivity.this, R.string.loading_data_failure, Toast.LENGTH_SHORT).show();
+                    HandleError.checkNetWorkError(LoadingDataActivity.this, e);
                 });
     }
 
@@ -124,5 +127,19 @@ public class LoadingDataActivity extends AppCompatActivity {
             });
         });
         executorService.shutdown();
+    }
+
+    private void showFinishDialog(){
+        MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(this);
+        dialogBuilder.setTitle(R.string.error);
+        dialogBuilder.setMessage(R.string.loading_data_failure);
+        dialogBuilder.setCancelable(false);
+        dialogBuilder.setNegativeButton(R.string.finish, (dialog, which) -> finishAffinity());
+        dialogBuilder.setPositiveButton(R.string.try_again, (dialog, which) -> {
+            getUserData();
+            dialog.dismiss();
+        });
+
+        dialogBuilder.show();
     }
 }

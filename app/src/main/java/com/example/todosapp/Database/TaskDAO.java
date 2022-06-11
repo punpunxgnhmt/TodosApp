@@ -1,17 +1,18 @@
 package com.example.todosapp.Database;
 
+import static com.example.todosapp.Utils.FirebaseConstants.timeOut;
+
 import android.annotation.SuppressLint;
-import android.util.Log;
+import android.os.Handler;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.todosapp.Interfaces.Callback;
 import com.example.todosapp.Interfaces.ChildRefEventListener;
 import com.example.todosapp.Interfaces.FindTask;
 import com.example.todosapp.Models.Task;
 import com.example.todosapp.Models.User;
-import com.example.todosapp.Utils.HandleError;
-import com.example.todosapp.Utils.Tools;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * this class is used for interaction with database about tasks.
@@ -175,27 +177,59 @@ public class TaskDAO {
     }
 
 
-    public void add(Task task, OnCompleteListener<Void> callback) {
+    public void add(Task task, OnCompleteListener<Void> callback, Callback timeoutCallback) {
+        AtomicBoolean returnedResult = new AtomicBoolean(false);
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            if(!returnedResult.get()){
+                if(timeoutCallback != null){
+                    timeoutCallback.callback();
+                }
+            }
+        }, timeOut);
+
         String id = reference.push().getKey();
         task.setId(id);
-        reference.child(id).setValue(task).addOnCompleteListener(callback);
+        reference.child(id).setValue(task)
+            .addOnCompleteListener(callback)
+            .addOnCompleteListener(result -> returnedResult.set(true));
     }
 
-    public void update(Task task, OnCompleteListener<Void> callback) {
-        reference.child(task.getId()).setValue(task).addOnCompleteListener(callback);
-        Log.e("EEE", "CALL UPDATE");
-    }
-
-
-    public void updateTaskCompleteState(Task task, boolean isCompleted, OnCompleteListener<Void> callback) {
+    public void updateTaskCompleteState(Task task, boolean isCompleted, OnCompleteListener<Void> callback, Callback timeoutCallback) {
         Date completedDate = isCompleted ? new Date() : task.getCompletedDate();
         task.setComplete(isCompleted);
         task.setCompletedDate(completedDate);
-        update(task, callback);
+        update(task, callback, timeoutCallback);
     }
 
-    public void delete(Task task, OnCompleteListener<Void> callback) {
-        reference.child(task.getId()).removeValue().addOnCompleteListener(callback);
+    public void update(Task task, OnCompleteListener<Void> callback, Callback timeoutCallback) {
+        AtomicBoolean returnedResult = new AtomicBoolean(false);
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            if(!returnedResult.get()){
+                if(timeoutCallback != null){
+                    timeoutCallback.callback();
+                }
+            }
+        }, timeOut);
+        reference.child(task.getId()).setValue(task)
+            .addOnCompleteListener(callback)
+            .addOnCompleteListener(result -> returnedResult.set(true));
+    }
+
+    public void delete(Task task, OnCompleteListener<Void> callback, Callback timeoutCallback) {
+        AtomicBoolean returnedResult = new AtomicBoolean(false);
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            if(!returnedResult.get()){
+                if(timeoutCallback != null){
+                    timeoutCallback.callback();
+                }
+            }
+        }, timeOut);
+        reference.child(task.getId()).removeValue()
+            .addOnCompleteListener(callback)
+            .addOnCompleteListener(result -> returnedResult.set(true));
     }
 
     public ArrayList<Task> find(FindTask condition) {

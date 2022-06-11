@@ -3,7 +3,6 @@ package com.example.todosapp.Adapters;
 import static android.app.Activity.RESULT_OK;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,10 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,10 +22,10 @@ import com.example.todosapp.Activities.Task.UpdateTaskActivity;
 import com.example.todosapp.Application.TodoApplication;
 import com.example.todosapp.Database.Database;
 import com.example.todosapp.Dialogs.ProgressDialog;
-import com.example.todosapp.Helper.TaskAdapterItemTouchHelper;
-import com.example.todosapp.Interfaces.ItemTaskClick;
+import com.example.todosapp.Interfaces.Callback;
 import com.example.todosapp.Models.Task;
 import com.example.todosapp.R;
+import com.example.todosapp.Utils.HandleError;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -156,6 +153,9 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
                     }
 
                     // hide dialog
+                    ProgressDialog.hideDialog();
+                }, () -> {
+                    adapter.removeTask(pos);
                     ProgressDialog.hideDialog();
                 });
             }

@@ -26,13 +26,16 @@ public class HandleError {
 
     public static void checkNetWorkError(Context context, Exception e) {
         ProgressDialog.hideDialog();
-        Log.e(tag, "checkNetWorkError: " + e.getMessage());
+
 
         if (Tools.isInternetAvailable(context)) {
             Toast.makeText(context, R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
             return;
         }
         Toast.makeText(context, R.string.unknown_error, Toast.LENGTH_SHORT).show();
+
+        if (e != null)
+            Log.e(tag, "checkNetWorkError: " + e.getMessage());
     }
 
     public static void updateProfileFailed(Context context, Exception e) {
@@ -69,7 +72,7 @@ public class HandleError {
         Toast.makeText(context, R.string.login_failed, Toast.LENGTH_SHORT).show();
     }
 
-    public static void sendEmailFailed(Context context, Exception e){
+    public static void sendEmailFailed(Context context, Exception e) {
         ProgressDialog.hideDialog();
         Log.e(tag, "sendEmailFailed: " + e.getMessage());
         Toast.makeText(context, R.string.cant_send_verify_email, Toast.LENGTH_SHORT).show();
