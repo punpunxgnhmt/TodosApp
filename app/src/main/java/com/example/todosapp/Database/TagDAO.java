@@ -181,8 +181,8 @@ public class TagDAO {
         }, timeOut);
         //remove the tag exist in database.
         reference.child(tag.getId()).removeValue()
-            .addOnCompleteListener(callback)
-            .addOnCompleteListener(task -> returnedResult.set(true));
+                .addOnCompleteListener(callback)
+                .addOnCompleteListener(task -> returnedResult.set(true));
     }
 
 

@@ -6,37 +6,41 @@ import android.util.Log;
 import com.example.todosapp.R;
 
 
-public class ProgressDialog {
-    private static android.app.ProgressDialog progressDialog;
-    private static boolean isVisible;
+public class ProgressDialog extends android.app.ProgressDialog {
+    private static ProgressDialog instance;
+
+    private ProgressDialog(Context context) {
+        super(context);
+    }
 
     public static void showDialog(Context context, String message) {
         if (context != null) {
-            progressDialog = new android.app.ProgressDialog(context);
-            progressDialog.setMessage(message);
-            progressDialog.show();
+            instance = new ProgressDialog(context);
+            instance.setMessage(message);
+            instance.show();
         }
     }
 
     public static void showDialog(Context context) {
         if (context != null) {
-            progressDialog = new android.app.ProgressDialog(context);
-            progressDialog.setMessage(context.getString(R.string.please_wait));
-            progressDialog.show();
+            instance = new ProgressDialog(context);
+            instance.setMessage(context.getString(R.string.please_wait));
+            instance.show();
         }
     }
 
     public static void hideDialog() {
-        if (progressDialog != null) {
-            progressDialog.dismiss();
+        if (instance != null) {
+            instance.dismiss();
         }
     }
 
-    public static boolean isShowing(){
-        if (progressDialog == null)
-            return  false;
+    public static boolean isShowingDialog() {
+        if (instance == null) {
+            return false;
+        }
 
-        return  progressDialog.isShowing();
+        return instance.isShowing();
     }
 
 }
