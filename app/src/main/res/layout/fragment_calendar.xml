@@ -22,8 +22,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:elevation="8dp"
-        android:maxDate="12/31/2022"
-        android:minDate="01/01/2022"
+        android:maxDate="12/31/2023"
+        android:minDate="01/01/2023"
         android:showDividers="none"
 
         app:layout_constraintEnd_toEndOf="parent"

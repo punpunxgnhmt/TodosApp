@@ -44,7 +44,7 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements ChildRefEventListener{
 
     View view;
     DrawerLayout drawerLayout;
@@ -55,7 +55,7 @@ public class ProfileFragment extends Fragment {
     NavigationView navigationView;
 
     Database database;
-    ChildRefEventListener tagChangeListener, taskChangeListener;
+    ChildRefEventListener tagChangeListener;
 
     FirebaseAuth auth;
     FirebaseUser user;
@@ -141,66 +141,66 @@ public class ProfileFragment extends Fragment {
 
         database.TAGS.addValueRefChangeListener(tagChangeListener);
 
-        taskChangeListener = new ChildRefEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot) {
-                Task task = snapshot.getValue(Task.class);
-                String tagTitle = getTagTitle(task.getTagId());
+//        taskChangeListener = new ChildRefEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot snapshot) {
+//                Task task = snapshot.getValue(Task.class);
+//                String tagTitle = getTagTitle(task.getTagId());
+//
+//                if (!map.containsKey(tagTitle)) {
+//                    tagTitle = getString(R.string.task_classification);
+//                }
+//                int count = map.get(tagTitle);
+//                map.put(tagTitle, count + 1);
+//                intTaskOverview();
+//                initChart();
+//                Log.e("EEE", "taskChangeListener onChildAdded");
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot snapshot, int position, Object oldObject) {
+//                Task task = snapshot.getValue(Task.class);
+//                Task oldTask = (Task) oldObject;
+//
+//                String tagTitle = getTagTitle(task.getTagId());
+//                String oldTagTitle = getTagTitle(oldTask.getTagId());
+//
+//                if (tagTitle.equals(oldTagTitle))
+//                    return;
+//
+//                if (!map.containsKey(tagTitle)) {
+//                    tagTitle = getString(R.string.unclassified);
+//                }
+//                int countNewTag = map.get(tagTitle);
+//                map.put(tagTitle, countNewTag + 1);
+//
+//
+//                if (!map.containsKey(oldTagTitle)) {
+//                    oldTagTitle = getString(R.string.unclassified);
+//                }
+//                int countOldTag = map.get(oldTagTitle);
+//                map.put(oldTagTitle, countOldTag - 1);
+//                intTaskOverview();
+//                initChart();
+//                Log.e("EEE", "taskChangeListener onChildChanged");
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot snapshot, int position) {
+//                Task task = snapshot.getValue(Task.class);
+//                String tagTitle = getTagTitle(task.getTagId());
+//                if (!map.containsKey(tagTitle)) {
+//                    tagTitle = getString(R.string.unclassified);
+//                }
+//                int count = map.get(tagTitle);
+//                map.put(tagTitle, count - 1);
+//                intTaskOverview();
+//                initChart();
+//                Log.e("EEE", "taskChangeListener onChildRemoved");
+//            }
+//        };
 
-                if (!map.containsKey(tagTitle)) {
-                    tagTitle = getString(R.string.task_classification);
-                }
-                int count = map.get(tagTitle);
-                map.put(tagTitle, count + 1);
-                intTaskOverview();
-                initChart();
-                Log.e("EEE", "taskChangeListener onChildAdded");
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot snapshot, int position, Object oldObject) {
-                Task task = snapshot.getValue(Task.class);
-                Task oldTask = (Task) oldObject;
-
-                String tagTitle = getTagTitle(task.getTagId());
-                String oldTagTitle = getTagTitle(oldTask.getTagId());
-
-                if (tagTitle.equals(oldTagTitle))
-                    return;
-
-                if (!map.containsKey(tagTitle)) {
-                    tagTitle = getString(R.string.unclassified);
-                }
-                int countNewTag = map.get(tagTitle);
-                map.put(tagTitle, countNewTag + 1);
-
-
-                if (!map.containsKey(oldTagTitle)) {
-                    oldTagTitle = getString(R.string.unclassified);
-                }
-                int countOldTag = map.get(oldTagTitle);
-                map.put(oldTagTitle, countOldTag - 1);
-                intTaskOverview();
-                initChart();
-                Log.e("EEE", "taskChangeListener onChildChanged");
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot snapshot, int position) {
-                Task task = snapshot.getValue(Task.class);
-                String tagTitle = getTagTitle(task.getTagId());
-                if (!map.containsKey(tagTitle)) {
-                    tagTitle = getString(R.string.unclassified);
-                }
-                int count = map.get(tagTitle);
-                map.put(tagTitle, count - 1);
-                intTaskOverview();
-                initChart();
-                Log.e("EEE", "taskChangeListener onChildRemoved");
-            }
-        };
-
-        database.TASKS.addValueRefChangeListener(taskChangeListener);
+        database.TASKS.addValueRefChangeListener(this);
     }
 
     private void initData() {
@@ -366,5 +366,69 @@ public class ProfileFragment extends Fragment {
 
     public void closeNavView() {
         drawerLayout.close();
+    }
+
+    @Override
+    public void onChildAdded(DataSnapshot snapshot) {
+        Task task = snapshot.getValue(Task.class);
+        String tagTitle = getTagTitle(task.getTagId());
+
+        if (!map.containsKey(tagTitle)) {
+            tagTitle = getString(R.string.task_classification);
+        }
+        int count = map.get(tagTitle);
+        map.put(tagTitle, count + 1);
+        intTaskOverview();
+        initChart();
+        Log.e("EEE", "taskChangeListener onChildAdded");
+    }
+
+    @Override
+    public void onChildChanged(DataSnapshot snapshot, int position, Object oldObject) {
+        Task task = snapshot.getValue(Task.class);
+        Task oldTask = (Task) oldObject;
+
+        String tagTitle = getTagTitle(task.getTagId());
+        String oldTagTitle = getTagTitle(oldTask.getTagId());
+
+        if (tagTitle.equals(oldTagTitle))
+            return;
+
+        if (!map.containsKey(tagTitle)) {
+            tagTitle = getString(R.string.unclassified);
+        }
+        int countNewTag = map.get(tagTitle);
+        map.put(tagTitle, countNewTag + 1);
+
+
+        if (!map.containsKey(oldTagTitle)) {
+            oldTagTitle = getString(R.string.unclassified);
+        }
+        int countOldTag = map.get(oldTagTitle);
+        map.put(oldTagTitle, countOldTag - 1);
+        intTaskOverview();
+        initChart();
+        Log.e("EEE", "taskChangeListener onChildChanged");
+    }
+
+    @Override
+    public void onChildRemoved(DataSnapshot snapshot, int position) {
+        Task task = snapshot.getValue(Task.class);
+        String tagTitle = getTagTitle(task.getTagId());
+        if (!map.containsKey(tagTitle)) {
+            tagTitle = getString(R.string.unclassified);
+        }
+        int count = map.get(tagTitle);
+        map.put(tagTitle, count - 1);
+        intTaskOverview();
+        initChart();
+        Log.e("EEE", "taskChangeListener onChildRemoved");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        database.TASKS.removeValueRefChangeListener(this);
+        database.TAGS.removeValueRefChangeListener(tagChangeListener);
     }
 }

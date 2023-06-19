@@ -30,7 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import java.util.ArrayList;
 
 
-public class TaskFragment extends Fragment {
+public class TaskFragment extends Fragment implements  ChildRefEventListener{
 
     // UI Element
     View view;
@@ -50,7 +50,7 @@ public class TaskFragment extends Fragment {
     String selectedTagId;
     int countFilterRequestsFinish;
 
-    ChildRefEventListener tasksChangeEvent, tagsChangeEvent;
+    ChildRefEventListener  tagsChangeEvent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -115,23 +115,23 @@ public class TaskFragment extends Fragment {
         };
         database.TAGS.addValueRefChangeListener(tagsChangeEvent);
 
-        tasksChangeEvent = new ChildRefEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot) {
-                checkLayoutListEmpty();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot snapshot, int position, Object oldObject) {
-                checkLayoutListEmpty();
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot snapshot, int position) {
-                checkLayoutListEmpty();
-            }
-        };
-        database.TASKS.addValueRefChangeListener(tasksChangeEvent);
+//        tasksChangeEvent = new ChildRefEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot snapshot) {
+//                checkLayoutListEmpty();
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot snapshot, int position, Object oldObject) {
+//                checkLayoutListEmpty();
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot snapshot, int position) {
+//                checkLayoutListEmpty();
+//            }
+//        };
+        database.TASKS.addValueRefChangeListener(this);
 
 
     }
@@ -205,9 +205,24 @@ public class TaskFragment extends Fragment {
     }
 
     @Override
+    public void onChildAdded(DataSnapshot snapshot) {
+        checkLayoutListEmpty();
+    }
+
+    @Override
+    public void onChildChanged(DataSnapshot snapshot, int position, Object oldObject) {
+        checkLayoutListEmpty();
+    }
+
+    @Override
+    public void onChildRemoved(DataSnapshot snapshot, int position) {
+        checkLayoutListEmpty();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
-        database.TASKS.removeValueRefChangeListener(tasksChangeEvent);
+        database.TASKS.removeValueRefChangeListener(this);
         database.TAGS.removeValueRefChangeListener(tagsChangeEvent);
     }
 }

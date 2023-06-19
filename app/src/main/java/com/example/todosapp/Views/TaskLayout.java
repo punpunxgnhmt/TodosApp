@@ -16,25 +16,24 @@ import com.example.todosapp.Adapters.TaskAdapter;
 import com.example.todosapp.Application.TodoApplication;
 import com.example.todosapp.Database.Database;
 import com.example.todosapp.Helper.TaskAdapterItemTouchHelper;
-import com.example.todosapp.Interfaces.ChildRefEventListener;
 import com.example.todosapp.Interfaces.Callback;
+import com.example.todosapp.Interfaces.ChildRefEventListener;
 import com.example.todosapp.Models.Task;
 import com.example.todosapp.R;
 import com.example.todosapp.Utils.HandleError;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class TaskLayout extends FrameLayout {
+public class TaskLayout extends FrameLayout implements ChildRefEventListener{
     CheckBox cbShowList;
     RecyclerView rvList;
 
 
     Database database;
-    ChildRefEventListener childRefEventListener;
+
     ArrayList<Task> tasks;
     TaskAdapter adapter;
     String typeTask;
@@ -55,33 +54,33 @@ public class TaskLayout extends FrameLayout {
         TodoApplication application = (TodoApplication) getContext().getApplicationContext();
         database = application.getDatabase();
 
-        childRefEventListener = new ChildRefEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot) {
-                Task task = snapshot.getValue(Task.class);
-                if (task == null)
-                    return;
-                addTask(task);
-            }
+//        childRefEventListener = new ChildRefEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot snapshot) {
+//                Task task = snapshot.getValue(Task.class);
+//                if (task == null)
+//                    return;
+//                addTask(task);
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot snapshot, int position, Object oldObject) {
+//                Task task = snapshot.getValue(Task.class);
+//                if (task == null)
+//                    return;
+//                updateTask(task);
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot snapshot, int position) {
+//                Task task = snapshot.getValue(Task.class);
+//                if (task == null)
+//                    return;
+//                removeTask(task);
+//            }
+//        };
 
-            @Override
-            public void onChildChanged(DataSnapshot snapshot, int position, Object oldObject) {
-                Task task = snapshot.getValue(Task.class);
-                if (task == null)
-                    return;
-                updateTask(task);
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot snapshot, int position) {
-                Task task = snapshot.getValue(Task.class);
-                if (task == null)
-                    return;
-                removeTask(task);
-            }
-        };
-
-        database.TASKS.addValueRefChangeListener(childRefEventListener);
+        database.TASKS.addValueRefChangeListener(this);
     }
 
     private void initView() {
@@ -225,6 +224,30 @@ public class TaskLayout extends FrameLayout {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        database.TASKS.removeValueRefChangeListener(childRefEventListener);
+        database.TASKS.removeValueRefChangeListener(this);
+    }
+
+    @Override
+    public void onChildAdded(DataSnapshot snapshot) {
+        Task task = snapshot.getValue(Task.class);
+        if (task == null)
+            return;
+        addTask(task);
+    }
+
+    @Override
+    public void onChildChanged(DataSnapshot snapshot, int position, Object oldObject) {
+        Task task = snapshot.getValue(Task.class);
+        if (task == null)
+            return;
+        updateTask(task);
+    }
+
+    @Override
+    public void onChildRemoved(DataSnapshot snapshot, int position) {
+        Task task = snapshot.getValue(Task.class);
+        if (task == null)
+            return;
+        removeTask(task);
     }
 }

@@ -27,7 +27,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class CalendarFragment extends Fragment {
+public class CalendarFragment extends Fragment implements ChildRefEventListener{
 
 
     View view;
@@ -41,7 +41,7 @@ public class CalendarFragment extends Fragment {
     Date selectedDate;
 
     Database database;
-    ChildRefEventListener childRefEventListener;
+//    ChildRefEventListener childRefEventListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,39 +64,39 @@ public class CalendarFragment extends Fragment {
     private void initData() {
         TodoApplication application = (TodoApplication) getActivity().getApplication();
         database = application.getDatabase();
-        childRefEventListener = new ChildRefEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot) {
-                Task task = snapshot.getValue(Task.class);
-                if (task == null)
-                    return;
-                adapter.addTempTasks(task, () -> {
-                    getActivity().runOnUiThread(() -> filterDate());
-                });
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot snapshot, int position, Object oldTask) {
-                Task task = snapshot.getValue(Task.class);
-                if (task == null)
-                    return;
-
-                adapter.updateTempTasks(task, () -> {
-                    getActivity().runOnUiThread(() -> filterDate());
-                });
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot snapshot, int position) {
-                Task task = snapshot.getValue(Task.class);
-                if (task == null)
-                    return;
-                adapter.removeItemTempTasks(task, () -> {
-                    getActivity().runOnUiThread(() -> filterDate());
-                });
-            }
-        };
-        database.TASKS.addValueRefChangeListener(childRefEventListener);
+//        childRefEventListener = new ChildRefEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot snapshot) {
+//                Task task = snapshot.getValue(Task.class);
+//                if (task == null)
+//                    return;
+//                adapter.addTempTasks(task, () -> {
+//                    getActivity().runOnUiThread(() -> filterDate());
+//                });
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot snapshot, int position, Object oldTask) {
+//                Task task = snapshot.getValue(Task.class);
+//                if (task == null)
+//                    return;
+//
+//                adapter.updateTempTasks(task, () -> {
+//                    getActivity().runOnUiThread(() -> filterDate());
+//                });
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot snapshot, int position) {
+//                Task task = snapshot.getValue(Task.class);
+//                if (task == null)
+//                    return;
+//                adapter.removeItemTempTasks(task, () -> {
+//                    getActivity().runOnUiThread(() -> filterDate());
+//                });
+//            }
+//        };
+        database.TASKS.addValueRefChangeListener(this);
         selectedDate = new Date();
         calendarView.setDate(selectedDate.getTime());
     }
@@ -146,6 +146,37 @@ public class CalendarFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        database.TASKS.removeValueRefChangeListener(childRefEventListener);
+        database.TASKS.removeValueRefChangeListener(this);
+    }
+
+    @Override
+    public void onChildAdded(DataSnapshot snapshot) {
+        Task task = snapshot.getValue(Task.class);
+        if (task == null)
+            return;
+        adapter.addTempTasks(task, () -> {
+            getActivity().runOnUiThread(this::filterDate);
+        });
+    }
+
+    @Override
+    public void onChildChanged(DataSnapshot snapshot, int position, Object oldTask) {
+        Task task = snapshot.getValue(Task.class);
+        if (task == null)
+            return;
+
+        adapter.updateTempTasks(task, () -> {
+            getActivity().runOnUiThread(this::filterDate);
+        });
+    }
+
+    @Override
+    public void onChildRemoved(DataSnapshot snapshot, int position) {
+        Task task = snapshot.getValue(Task.class);
+        if (task == null)
+            return;
+        adapter.removeItemTempTasks(task, () -> {
+            getActivity().runOnUiThread(this::filterDate);
+        });
     }
 }
