@@ -27,10 +27,9 @@ import com.google.firebase.database.DataSnapshot;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class TaskLayout extends FrameLayout implements ChildRefEventListener{
+public class TaskLayout extends FrameLayout implements ChildRefEventListener {
     CheckBox cbShowList;
     RecyclerView rvList;
-
 
     Database database;
 
@@ -187,7 +186,7 @@ public class TaskLayout extends FrameLayout implements ChildRefEventListener{
                 if (dismissItSelf.get()) {
                     adapter.clearUndoTask();
                     database.TASKS.delete(task, res -> {
-                        if(!res.isSuccessful()){
+                        if (!res.isSuccessful()) {
                             HandleError.checkNetWorkError(getContext(), res.getException());
                         }
                     }, null);
@@ -250,4 +249,6 @@ public class TaskLayout extends FrameLayout implements ChildRefEventListener{
             return;
         removeTask(task);
     }
+
+
 }

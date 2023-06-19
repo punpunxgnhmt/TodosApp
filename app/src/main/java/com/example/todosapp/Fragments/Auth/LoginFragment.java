@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -31,11 +32,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -53,6 +56,7 @@ public class LoginFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseUser user;
     GoogleSignInClient googleSignInClient;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -166,6 +170,7 @@ public class LoginFragment extends Fragment {
 
     private final ActivityResultLauncher<Intent> signInCredential = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
+                Log.e(HandleError.tag, result.toString());
                 if (result.getResultCode() == RESULT_OK) {
                     Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
                     try {
@@ -181,6 +186,9 @@ public class LoginFragment extends Fragment {
     private void loginWithGoogle(String token) {
         AuthCredential credential = GoogleAuthProvider.getCredential(token, null);
         auth.signInWithCredential(credential)
+                .addOnCompleteListener(task -> {
+                    Log.e(HandleError.tag, task.toString());
+                })
                 .addOnSuccessListener(task -> {
                     loginSuccessfully();
                 })

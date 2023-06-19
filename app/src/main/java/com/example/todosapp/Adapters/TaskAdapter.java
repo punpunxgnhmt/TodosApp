@@ -300,6 +300,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> im
         Task task = tasks.get(position);
         Intent intent = new Intent(context, UpdateTaskActivity.class);
         intent.putExtra("task", task);
+        Log.e(HandleError.tag, task.toString());
         context.startActivity(intent);
     }
 

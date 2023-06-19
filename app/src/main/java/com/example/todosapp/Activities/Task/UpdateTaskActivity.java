@@ -36,7 +36,8 @@ public class UpdateTaskActivity extends TaskActivity {
     private void getTask() {
         Intent intent = getIntent();
         if (intent.hasExtra("task")) {
-            this.task = (Task) intent.getSerializableExtra("task");
+            Task task = (Task) intent.getSerializableExtra("task");
+            this.task = task.clone();
         }
     }
 

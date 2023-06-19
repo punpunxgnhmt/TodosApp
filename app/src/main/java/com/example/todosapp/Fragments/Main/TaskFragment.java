@@ -30,7 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import java.util.ArrayList;
 
 
-public class TaskFragment extends Fragment implements  ChildRefEventListener{
+public class TaskFragment extends Fragment implements ChildRefEventListener {
 
     // UI Element
     View view;
@@ -50,7 +50,7 @@ public class TaskFragment extends Fragment implements  ChildRefEventListener{
     String selectedTagId;
     int countFilterRequestsFinish;
 
-    ChildRefEventListener  tagsChangeEvent;
+    ChildRefEventListener tagsChangeEvent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

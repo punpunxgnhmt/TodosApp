@@ -5,7 +5,6 @@ import android.util.Log;
 
 import com.example.todosapp.Database.Database;
 import com.example.todosapp.Models.User;
-import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 

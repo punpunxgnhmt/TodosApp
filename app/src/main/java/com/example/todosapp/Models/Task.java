@@ -174,6 +174,7 @@ public class Task implements Serializable {
                 ", isComplete=" + isComplete +
                 '}';
     }
+
     public static class TypeTask implements Serializable {
         public static String TODAY_COMPLETED = "TODAY_COMPLETED";
         public static String COMPLETED = "COMPLETED";
