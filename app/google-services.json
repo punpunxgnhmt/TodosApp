@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "534757271054-4dcafo2rr40koj6vfnhpjhnfn09emd9g.apps.googleusercontent.com",
+          "client_id": "534757271054-0ibleqa74q4rpjqm7j91g2o2sn1gmb6r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.todosapp",
-            "certificate_hash": "3151272ed950eb8f303d8a3ddfb20bce5e92eefd"
+            "certificate_hash": "74fcb93775298dc20f853eecd027dc09719ebbd3"
           }
         },
         {
