@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleEvents() {
 
-        // when swipe to change fragments -> update selected icon in bottom navigtaion view
+        // when swipe to change fragments -> update selected icon in bottom navigation view
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
