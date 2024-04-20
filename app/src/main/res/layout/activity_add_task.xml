@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_arrow_left"
+                app:title="Thêm nhiệm vụ                         Xong"
+                app:titleTextColor="@color/black"
+
+
+                />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTask"
+                style="@style/ViewMarginInTaskLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:hint="Thêm nhiệm vụ"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:padding="4dp"
+                tools:ignore="LabelFor" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTodo"
+                style="@style/ViewMarginInTaskLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:minHeight="100dp" />
+
+            <LinearLayout
+                android:id="@+id/btnAddTodo"
+                style="@style/TaskGroupLayout"
+                android:layout_marginTop="12dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    style="@style/IconTaskGroup"
+                    android:src="@drawable/ic_add"
+                    tools:ignore="ContentDescription,UseAppTint" />
+
+                <TextView
+                    style="@style/TitleTaskGroup"
+                    android:text="Thêm nhiệm vụ phụ"
+                    android:textColor="@color/primaryColor" />
+            </LinearLayout>
+
+            <View style="@style/HorizontalLineDeviceTaskGroup" />
+
+            <LinearLayout
+                android:id="@+id/btnDate"
+                style="@style/TaskGroupLayout">
+
+                <ImageView
+                    style="@style/IconTaskGroup"
+                    android:src="@drawable/ic_calendar"
+                    tools:ignore="ContentDescription,UseAppTint" />
+
+                <TextView
+                    style="@style/TitleTaskGroup"
+                    android:text="Ngày tới hạn" />
+
+                <TextView
+                    android:id="@+id/tvDeadlineDate"
+                    style="@style/DetailTaskGroup"
+                    android:text="20/04/2024" />
+            </LinearLayout>
+
+            <View style="@style/HorizontalLineDeviceTaskGroup" />
+
+            <LinearLayout
+                android:id="@+id/btnTime"
+                style="@style/TaskGroupLayout">
+
+                <ImageView
+                    style="@style/IconTaskGroup"
+                    android:src="@drawable/ic_clock"
+                    tools:ignore="ContentDescription,UseAppTint" />
+
+                <TextView
+                    style="@style/TitleTaskGroup"
+                    android:text="Thời gian" />
+
+                <TextView
+                    android:id="@+id/tvDeadlineTime"
+                    style="@style/DetailTaskGroup"
+                    android:text="21:12" />
+            </LinearLayout>
+
+            <View style="@style/HorizontalLineDeviceTaskGroup" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btnNote"
+                    style="@style/TaskGroupLayout">
+
+                    <ImageView
+                        style="@style/IconTaskGroup"
+                        android:src="@drawable/ic_note"
+                        tools:ignore="ContentDescription,UseAppTint" />
+
+                    <TextView
+                        style="@style/TitleTaskGroup"
+                        android:text="Ghi chú" />
+
+                    <TextView
+                        style="@style/DetailTaskGroup"
+                        android:background="@null"
+                        android:text="Sửa" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNote"
+                    style="@style/ViewMarginInTaskLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="top"
+                    android:hint="Nhập ghi chú"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:padding="4dp"
+                    tools:ignore="LabelFor" />
+
+            </LinearLayout>
+
+            <View style="@style/HorizontalLineDeviceTaskGroup" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+</ScrollView>

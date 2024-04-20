@@ -2,4 +2,7 @@
     <string name="app_name">TodosApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="agree_with_conditions">Bằng cách đăng ký, bạn đồng ý với <font color="#FF0707">Điều khoản &amp; Điều kiện</font> và  <font color="#FF0707">Chính sách Quyền riêng tư</font> của chúng tôi.</string>
+
 </resources>
