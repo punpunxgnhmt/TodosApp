@@ -16,7 +16,7 @@
         <item name="boxCornerRadiusBottomEnd">4dp</item>
         <item name="boxBackgroundColor">@color/white</item>
         <item name="boxStrokeColor">#333</item>
-        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">1.5dp</item>
         <item name="hintEnabled">false</item>
         <item name="maxLines">1</item>

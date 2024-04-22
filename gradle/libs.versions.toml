@@ -8,6 +8,11 @@ material = "1.10.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
 circleindicator = "2.1.6"
+gifdrawable = "1.2.22"
+navigationFragment = "2.7.7"
+navigationUi = "2.7.7"
+circleimageview = "3.1.0"
+flexbox = "3.0.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -18,7 +23,11 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 circleindicator = { group = "me.relex", name = "circleindicator", version.ref = "circleindicator" }
-
+gifdrawable = { group = "pl.droidsonroids.gif", name = "android-gif-drawable", version.ref = "gifdrawable" }
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+circleimageview= { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleimageview" }
+flexbox= { group = "com.google.android.flexbox", name = "flexbox", version.ref = "flexbox" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

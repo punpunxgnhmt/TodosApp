@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFBD9"
     android:fillViewport="true">
 
     <FrameLayout
@@ -64,7 +65,7 @@
                 <TextView
                     style="@style/TitleTaskGroup"
                     android:text="Thêm nhiệm vụ phụ"
-                    android:textColor="@color/primaryColor" />
+                    android:textColor="#F5DC00" />
             </LinearLayout>
 
             <View style="@style/HorizontalLineDeviceTaskGroup" />
@@ -85,6 +86,7 @@
                 <TextView
                     android:id="@+id/tvDeadlineDate"
                     style="@style/DetailTaskGroup"
+                    android:backgroundTint="#FFF6A2"
                     android:text="20/04/2024" />
             </LinearLayout>
 
@@ -106,6 +108,7 @@
                 <TextView
                     android:id="@+id/tvDeadlineTime"
                     style="@style/DetailTaskGroup"
+                    android:backgroundTint="#FFF6A2"
                     android:text="21:12" />
             </LinearLayout>
 

@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
 
 
-    <color name="primaryColor">#DE4949</color>
+    <color name="primaryColor">#FFED4B</color>
     <color name="primaryColorDisabled">#D0E3F9</color>
     <color name="primaryColorLight">#F18080</color>
     <color name="primaryColorLightTrans">#80F18080</color>
@@ -16,6 +16,8 @@
     <color name="black">#000</color>
     <color name="white">#FFF</color>
     <color name="gray">#808080</color>
+    <color name="yellow">#D6C100</color>
+
 
     <color name="textColor">#333</color>
     <color name="textColorLight">#E6755F5F</color>

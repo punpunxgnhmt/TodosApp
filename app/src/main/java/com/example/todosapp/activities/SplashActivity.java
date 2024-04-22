@@ -36,8 +36,6 @@ public class SplashActivity extends AppCompatActivity {
         });
 
         InitComponents();
-        InitAnimation();
-        scaleAnimation();
         Navigate();
 
     }
@@ -47,17 +45,7 @@ public class SplashActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE);
     }
 
-    private void InitAnimation() {
-        scaleAnimation = new ScaleAnimation(0.5f, 1f, 0.5f, 1f, 50f, 50f);
-        scaleAnimation.setDuration(1000);
-        scaleAnimation.setRepeatMode(Animation.REVERSE);
-        scaleAnimation.setRepeatMode(Animation.INFINITE);
-    }
 
-    private void scaleAnimation() {
-        logoImg.startAnimation(scaleAnimation);
-        tvName.startAnimation(scaleAnimation);
-    }
 
     private void Navigate() {
         // After 1 second after the application start, navigate to auth screen to authentication

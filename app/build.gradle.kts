@@ -35,6 +35,11 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.circleindicator)
+    implementation(libs.gifdrawable)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.circleimageview)
+    implementation(libs.flexbox)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

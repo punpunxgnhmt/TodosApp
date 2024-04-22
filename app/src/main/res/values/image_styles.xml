@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="LogoImageStyle">
-        <item name="android:layout_width">88dp</item>
-        <item name="android:layout_height">88dp</item>
-        <item name="android:layout_marginTop">36dp</item>
+        <item name="android:layout_width">184dp</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_marginTop">84dp</item>
+       
     </style>
 
     <style name="IconTaskGroup">
