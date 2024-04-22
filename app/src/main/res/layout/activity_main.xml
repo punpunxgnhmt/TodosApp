@@ -43,6 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_wrapBehaviorInParent="skipped"
+        app:itemTextColor="@color/black"
         app:menu="@menu/menu_main" />
 
 
