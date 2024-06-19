@@ -13,7 +13,7 @@
     <string name="calendar">Lịch</string>
     <string name="profile">Của tôi</string>
 
-
+<!--    <string name="default_web_client_id">287165686379-281tudnfer47i4gbnlqstdslmqluirl9.apps.googleusercontent.com</string>-->
     <!--    On boarding -->
     <string name="welcome_to_app">Welcome to My Todos</string>
     <string name="next">Tiếp tục</string>

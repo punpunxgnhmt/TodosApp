@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "534757271054",
-    "firebase_url": "https://da-todosapp-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "da-todosapp",
-    "storage_bucket": "da-todosapp.appspot.com"
+    "project_number": "287165686379",
+    "firebase_url": "https://managementtask-a10ee-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "managementtask-a10ee",
+    "storage_bucket": "managementtask-a10ee.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:534757271054:android:3781c4d7a42e40a6b53e5f",
+        "mobilesdk_app_id": "1:287165686379:android:aa0cb78281f0ef6b14472e",
         "android_client_info": {
           "package_name": "com.example.todosapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "534757271054-0ibleqa74q4rpjqm7j91g2o2sn1gmb6r.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.todosapp",
-            "certificate_hash": "74fcb93775298dc20f853eecd027dc09719ebbd3"
-          }
-        },
-        {
-          "client_id": "534757271054-1vaubr41ln5vof7aig9p9e9er2tv7e4i.apps.googleusercontent.com",
+          "client_id": "287165686379-281tudnfer47i4gbnlqstdslmqluirl9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDntQXXnUbJJp9AX-t0b9ViuOBet-gbRvs"
+          "current_key": "AIzaSyCRbsX8QCIlwgU6vFKKts6Sq1GJ9QWvOmM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "534757271054-1vaubr41ln5vof7aig9p9e9er2tv7e4i.apps.googleusercontent.com",
+              "client_id": "287165686379-281tudnfer47i4gbnlqstdslmqluirl9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
