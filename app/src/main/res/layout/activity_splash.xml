@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.SplashActivity"
+    android:background="#FFFBD9"
     tools:viewBindingIgnore="true">
 
     <LinearLayout
@@ -16,19 +17,10 @@
 
         <ImageView
             android:id="@+id/logo_img"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/img_logo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/icon_logo"
             tools:ignore="ContentDescription" />
 
-        <TextView
-            android:id="@+id/tv_name"
-            style="@style/LogoTextStyle"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineHeight="56sp"
-            android:text="@string/appName"
-            tools:ignore="UnusedAttribute" />
     </LinearLayout>
 </RelativeLayout>

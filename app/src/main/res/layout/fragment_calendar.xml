@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFBD9"
     android:orientation="vertical">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
@@ -22,8 +23,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:elevation="8dp"
-        android:maxDate="12/31/2023"
-        android:minDate="01/01/2023"
+        android:maxDate="12/31/2025"
+        android:minDate="01/01/2024"
         android:showDividers="none"
 
         app:layout_constraintEnd_toEndOf="parent"

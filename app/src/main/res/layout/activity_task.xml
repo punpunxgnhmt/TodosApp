@@ -67,7 +67,7 @@
                 <TextView
                     style="@style/TitleTaskGroup"
                     android:text="@string/add_subtask"
-                    android:textColor="@color/primaryColor" />
+                    android:textColor="@color/yellow" />
             </LinearLayout>
 
             <View style="@style/HorizontalLineDeviceTaskGroup" />

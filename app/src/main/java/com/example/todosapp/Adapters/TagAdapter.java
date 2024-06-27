@@ -55,7 +55,7 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.ViewHolder> {
         // if position of the tags equals to tagSelected -> set background with primaryColor and set text color with white
         // else set background with primary color light and set text color with textColorLight
         if (tagSelected == position) {
-            holder.tvTagName.setTextColor(context.getColor(R.color.white));
+            holder.tvTagName.setTextColor(context.getColor(R.color.black));
             holder.tagContainer.setBackgroundTintList(context.getColorStateList(R.color.primaryColor));
         } else {
             holder.tvTagName.setTextColor(context.getColor(R.color.textColorLight));

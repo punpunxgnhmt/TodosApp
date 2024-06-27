@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:background="#FFFBD9"
     tools:context=".Fragments.Main.TaskFragment"
     tools:viewBindingIgnore="true">
 
@@ -94,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/img_free_time"
+                android:src="@drawable/onboarding_03"
                 tools:ignore="ContentDescription" />
 
             <TextView

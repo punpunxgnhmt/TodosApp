@@ -10,9 +10,9 @@
     <application
         android:name=".Application.TodoApplication"
         android:allowBackup="true"
-        android:icon="@drawable/img_logo"
+        android:icon="@drawable/icon_logo"
         android:label="@string/appName"
-        android:roundIcon="@drawable/img_logo"
+        android:roundIcon="@drawable/icon_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.TodosApp"
         tools:ignore="AllowBackup">

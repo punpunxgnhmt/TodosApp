@@ -39,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void InitComponents() {
         logoImg = findViewById(R.id.logo_img);
-        tvName = findViewById(R.id.tv_name);
+//        tvName = findViewById(R.id.tv_name);
         sharedPreferences = getSharedPreferences(Constants.LOGIN, Context.MODE_PRIVATE);
     }
 
@@ -52,7 +52,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void scaleAnimation() {
         logoImg.startAnimation(scaleAnimation);
-        tvName.startAnimation(scaleAnimation);
+//        tvName.startAnimation(scaleAnimation);
     }
 
     private void Navigate() {

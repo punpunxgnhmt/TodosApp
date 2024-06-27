@@ -11,6 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="#FFFBD9"
         android:layout_height="wrap_content">
 
         <com.example.todosapp.Views.MessageLayout
@@ -24,18 +25,12 @@
         <ImageView
             android:id="@+id/imageView"
             style="@style/LogoImageStyle"
-            android:src="@drawable/img_logo"
+            android:src="@drawable/img_logo_chick"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
-        <TextView
-            android:id="@+id/textView"
-            style="@style/LogoTextStyle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/textView2"
@@ -43,7 +38,7 @@
             android:text="@string/login_to_your_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputLayoutUsername"

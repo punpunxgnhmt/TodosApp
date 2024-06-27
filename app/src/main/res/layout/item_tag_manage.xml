@@ -12,6 +12,7 @@
     android:paddingVertical="4dp">
 
     <View
+
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:background="@drawable/shape_rounded_background" />

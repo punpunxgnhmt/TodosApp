@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFBD9"
     tools:viewBindingIgnore="true">
 
     <LinearLayout
@@ -16,31 +17,36 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="305dp"
-            android:layout_height="252dp"
-            android:layout_marginTop="92dp"
-            android:src="@drawable/img_on_boarding_1"
+            android:layout_width="411dp"
+            android:layout_height="411dp"
+            android:src="@drawable/onboarding_01"
             tools:ignore="ContentDescription" />
 
         <TextView
             style="@style/OnBoardingTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/welcome_to_app"
+            android:layout_marginTop="0dp"
+            android:text="Quản lý công việc dễ dàng hơn!"
             tools:ignore="UnusedAttribute" />
 
         <TextView
             style="@style/OnBoardingMessage"
-            android:layout_width="wrap_content"
+            android:layout_width="371dp"
             android:layout_height="wrap_content"
-            android:text="@string/on_boarding_1_message"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Cho phép người dùng lập kế hoạch, sắp xếp công việc theo mức độ ưu tiên, và quản lý thời gian một cách hiệu quả hơn."
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textStyle="normal"
             tools:ignore="UnusedAttribute" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/vector_on_boarding"
+
         android:backgroundTint="#F96060"
         android:gravity="center"
         android:orientation="vertical"
@@ -53,17 +59,15 @@
             android:id="@+id/btn_continue_boarding_1"
             style="@style/OnBoardingButton"
             android:layout_marginTop="12dp"
-            android:layout_width="295dp"
-            android:layout_height="52dp"
-            android:text="@string/next" />
+            android:text="Tiếp tục" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
             style="@style/LoginButtonOnBoarding"
-            android:layout_marginTop="12dp"
-            android:text="@string/log_in"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Đăng nhập" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFBD9"
     tools:viewBindingIgnore="true">
 
     <ScrollView
@@ -31,7 +32,7 @@
                     android:layout_height="60dp"
                     app:civ_circle_background_color="#EDEDED"
                     android:tint="#BCBCBC"
-                    android:src="@drawable/ic_user_circle" />
+                    android:src="@drawable/ic_user" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -80,17 +81,24 @@
 
                 <ImageButton
                     android:id="@+id/btnOptions"
-                    style="@style/IconButton"
+                    android:layout_width="48dp"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/primaryColorLight"
                     android:src="@drawable/ic_settings"
                     android:tint="@color/textColor"
                     tools:ignore="ContentDescription,UseAppTint" />
             </LinearLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/img_stats_banner"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -113,7 +121,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:cardBackgroundColor="@color/primaryColorLightTrans"
+                        app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="8dp"
                         app:cardElevation="0dp">
 
@@ -154,7 +162,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:cardBackgroundColor="@color/primaryColorLightTrans"
+                        app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="8dp"
                         app:cardElevation="0dp">
 
@@ -203,6 +211,7 @@
                     android:textFontWeight="700"
                     android:textSize="18sp"
                     android:textStyle="bold"
+                    android:visibility="gone"
                     tools:ignore="UnusedAttribute" />
 
 
@@ -211,7 +220,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="8dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    />
 
             </LinearLayout>
 
